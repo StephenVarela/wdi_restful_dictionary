@@ -1,1 +1,7 @@
-<p>This is the temporary view for index</p>
+<h1>This is the entries page</h1>
+
+<% @entries.each do |entry| %>
+  <p>
+    <%= link_to("#{entry.word}", entry_path(entry)) %>
+  </p>
+<%end%>
