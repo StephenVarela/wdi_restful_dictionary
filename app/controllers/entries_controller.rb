@@ -12,18 +12,38 @@ class EntriesController < ApplicationController
   end
 
   def create
-    redirect_to entries_url
+    entry = Entry.new
+    entry.word = params[:entry][:word]
+    entry.language = params[:entry][:language]
+    entry.definition = params[:entry][:definition]
+
+    if entry.save #save to database
+      redirect_to entries_url
+    else
+      render :new
+    end
+
   end
 
   def edit
-    @id = params[:id]
+    @entry = Entry.find(params[:id])
   end
 
   def update
+
+    entry = Entry.find_by(:id => params[:id])
+    entry.word = params[:entry][:word]
+    entry.language = params[:entry][:language]
+    entry.definition = params[:entry][:definition]
+
+    entry.save
+
     redirect_to entry_url(params[:id])
   end
 
   def destroy
+    entry = Entry.find_by(:id => params[:id])
+    entry.destroy
     redirect_to entries_url
   end
 

@@ -2,3 +2,6 @@
 <h3> Word: <%=@entry.word%> </h3>
 <h3> Language: <%=@entry.language%> </h3>
 <p> Definition: <%="#{@entry.definition}"%></p>
+<p> <%=link_to("All", entries_url) %> |
+    <%=link_to("Edit", edit_entry_path(@entry)) %> |
+    <%= link_to "delete", entry_path(@entry), method: :delete %> </p>
