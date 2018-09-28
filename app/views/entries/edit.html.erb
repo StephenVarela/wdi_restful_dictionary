@@ -1,19 +1,5 @@
 <h1>Edit Word</h1>
-<%= form_for @entry do |f| %>
-
-  <p>
-    Word: <%=f.text_field :word%>
-  </p>
-  <p>
-    Language: <%=f.text_field :language%>
-  </p>
-
-  <p>
-    Word: <%=f.text_field :definition%>
-  </p>
-
-  <p>
-    <%=f.submit%> | <%= link_to "delete", entry_path(@entry), method: :delete %>
-  </p>
-
-<%end %>
+<%= render 'entry_form', entry:  @entry %>
+<p>
+  <%= link_to "delete", entry_path(@entry), method: :delete %>
+</p>
